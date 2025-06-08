@@ -1,0 +1,185 @@
+[
+  {
+    "kasvin_nimi": "Käärmekaktus",
+    "tieteellinen_nimi": "Disocactus flagelliformis",
+    "hoitoohjeet": "Helppohoitoinen riippuva kaktus, joka viihtyy valoisassa paikassa. Kastele säästeliäästi.",
+    "valo": "Kirkas epäsuora valo, suojaa suoralta auringonpaisteelta",
+    "kastelu": "Kesällä kastelu kun multa kuivunut, talvella niukemmin. Anna mullan kuivahtaa kastelujen välillä.",
+    "multa": "Läpäisevä kaktus- tai mehikasvimulta",
+    "lämpötila": "15-25°C, talvella viileämpi 10-15°C",
+    "kosteus": "Sietää kuivaa huoneilmaa",
+    "lisävinkit": [
+      "Sopii erityisesti amppeliin",
+      "Kukkii keväällä vaaleanpunaisin kukin",
+      "Varo liiallista kastelua"
+    ],
+    "lähteet": [
+      "Wikipedia"
+    ]
+  },
+  {
+    "kasvin_nimi": "Viherkasvi",
+    "tieteellinen_nimi": "Plantae",
+    "hoitoohjeet": "Viherkasvi on yleisnimi monille sisätiloissa kasvatettaville kasveille. Perushoito riippuu kasvilajista.",
+    "valo": "Useimmat viherkasvit viihtyvät kirkkaassa epäsuorassa valossa. Vältä suoraa auringonpaistetta.",
+    "kastelu": "Kastele kun mullan pinta on kuivunut. Tarkista kasteltarve sormella tunnustelemalla.",
+    "multa": "Käytä laadukasta huonekasveille tarkoitettua multaa, jossa on hyvä vedenläpäisykyky.",
+    "lämpötila": "18-24°C on sopiva useimmille viherkasveille.",
+    "kosteus": "Normaali huoneilman kosteus riittää. Sumuta tarvittaessa.",
+    "lisävinkit": [
+      "Tarkkaile kasvin kuntoa säännöllisesti",
+      "Poista kuivuneet lehdet",
+      "Puhdista lehdet pölystä kostealla liinalla",
+      "Lannoita kasvukaudella"
+    ],
+    "lähteet": [
+      "Wikipedia",
+      "Yleiset huonekasvien hoito-ohjeet"
+    ]
+  },
+  {
+    "kasvin_nimi": "Rönsylilja",
+    "tieteellinen_nimi": "Chlorophytum comosum",
+    "hoitoohjeet": "Helppohoitoinen viherkasvi, joka viihtyy sisätiloissa ympäri vuoden",
+    "valo": "Viihtyy valoisassa paikassa, mutta ei suorassa auringonvalossa",
+    "kastelu": "Kastele säännöllisesti, anna pintamullan kuivahtaa kastelujen välillä",
+    "multa": "Tavallinen huonekasvimulta, jossa hyvä vedenläpäisykyky",
+    "lämpötila": "Viihtyy normaalissa huonelämpötilassa 18-24°C",
+    "kosteus": "Sietää kuivaa huoneilmaa, mutta hyötyy sumutuksesta",
+    "lisävinkit": [
+      "Lisääntyy helposti rönsyistä",
+      "Poista kuivuneet lehdet säännöllisesti",
+      "Lannoita kasvukaudella kerran kuukaudessa",
+      "Voidaan pitää myös amppelissa"
+    ],
+    "lähteet": [
+      "Wikipedia",
+      "Suomen huonekasviyhdistys"
+    ]
+  },
+  {
+    "kasvin_nimi": "Palmuvehka",
+    "tieteellinen_nimi": "Zamioculcas zamiifolia",
+    "hoitoohjeet": "Erittäin helppohoitoinen ja kestävä huonekasvi, joka sietää hyvin erilaisia olosuhteita",
+    "valo": "Viihtyy varjoisasta puolivarjoisaan. Kestää myös kirkasta epäsuoraa valoa",
+    "kastelu": "Kastele säästeliäästi, vain kun multa on kuivunut. Kestää kuivuutta hyvin ja voi selvitä jopa kuukauden ilman kastelua",
+    "multa": "Tavallinen huonekasvilta tai vehkamulta. Tärkeintä on hyvä salaojitus",
+    "lämpötila": "Viihtyy huoneenlämmössä 18-25°C",
+    "kosteus": "Sietää kuivaa huoneilmaa hyvin, ei vaadi sumutusta",
+    "lisävinkit": [
+      "Älä kastele liikaa, sillä juuret mätänevät helposti",
+      "Voidaan lisätä helposti lehtipistokkaista",
+      "Myrkyllinen kasvi, pidä poissa lasten ja lemmikkien ulottuvilta",
+      "Ei vaadi säännöllistä lannoitusta"
+    ],
+    "lähteet": [
+      "Wikipedia",
+      "Huonekasviopas.fi"
+    ]
+  },
+  {
+    "kasvin_nimi": "Limoviikuna",
+    "tieteellinen_nimi": "Ficus benjamina",
+    "hoitoohjeet": "Helppohoitoinen huonekasvi, joka vaatii tasaisia olosuhteita. Ei siedä paikan vaihtoa tai vetoa.",
+    "valo": "Kirkas epäsuora valo, ei suoraa auringonpaistetta",
+    "kastelu": "Kastele kun mullan pinta on kuivunut. Vähennä kastelua talvella.",
+    "multa": "Tavallinen huonekasvilta, jossa hyvä vedenläpäisevyys",
+    "lämpötila": "18-24°C, ei alle 15°C",
+    "kosteus": "Normaali huoneilman kosteus, suihkutus hyödyksi",
+    "lisävinkit": [
+      "Pudottaa helposti lehtiä olosuhteiden muuttuessa",
+      "Leikkaa kuivuneet oksat pois",
+      "Lannoita kasvukaudella kerran kuukaudessa",
+      "Voi leikata latvasta kasvun hillitsemiseksi"
+    ],
+    "lähteet": [
+      "Pinkka.helsinki.fi",
+      "Wikipedia.fi",
+      "Plantagen.fi"
+    ]
+  },
+  {
+    "kasvin_nimi": "Monstera (Peikonlehti)",
+    "tieteellinen_nimi": "Monstera deliciosa",
+    "hoitoohjeet": "Helppohoitoinen köynnöskasvi, joka viihtyy vakaissa olosuhteissa. Tarvitsee tuen kasvaessaan.",
+    "valo": "Kirkas epäsuora valo. Ei suoraa auringonvaloa, joka voi polttaa lehtiä.",
+    "kastelu": "Kastele kun mullan pinta on kuivunut. Vähennä kastelua talvella. Tyhjennä aluslautanen ylimääräisestä vedestä.",
+    "multa": "Ilmava ja hyvin vettä läpäisevä multa. Lisää tavalliseen multaan karkeaa ainesta kuten perliittiä.",
+    "lämpötila": "18-30°C, ei alle 15°C. Vältä kylmiä vetoja.",
+    "kosteus": "Pitää korkeasta ilmankosteudesta. Sumuta lehtiä säännöllisesti tai käytä ilmankostutinta.",
+    "lisävinkit": [
+      "Puhdista lehdet pölystä kostealla liinalla",
+      "Leikkaa kuivuneet tai kellastuneet lehdet pois",
+      "Kiinnitä köynnös tukikeppiin tai sammaltikkuun",
+      "Lannoita kasvukaudella kerran kuukaudessa"
+    ],
+    "lähteet": [
+      "Wikipedia",
+      "Plantagen.fi",
+      "Viherpeukalot.fi"
+    ]
+  },
+  {
+    "kasvin_nimi": "Anopinkieli",
+    "tieteellinen_nimi": "Sansevieria trifasciata",
+    "hoitoohjeet": "Helppohoitoinen ja kestävä huonekasvi, joka selviytyy vaatimattomissakin oloissa",
+    "valo": "Viihtyy sekä valoisassa että varjoisassa paikassa, välttää suoraa auringonpaistetta",
+    "kastelu": "Kastele harvoin ja niukasti, anna mullan kuivahtaa kastelujen välillä. Talvella vähennä kastelua",
+    "multa": "Tavallinen huonekasvimulta, jossa hyvä salaojitus",
+    "lämpötila": "Viihtyy huoneenlämmössä, kestää myös viileämpää (10-30°C)",
+    "kosteus": "Ei vaadi erityistä ilmankosteutta, sietää kuivaa huoneilmaa",
+    "lisävinkit": [
+      "Puhdista lehdet pölystä kostealla liinalla",
+      "Voi lisätä jakamalla juurakosta",
+      "Kestää hyvin myös hämärässä",
+      "Puhdistaa tehokkaasti huoneilmaa"
+    ],
+    "lähteet": [
+      "Wikipedia",
+      "Pirkka Puutarha",
+      "Viherpeukalot.fi"
+    ]
+  },
+  {
+    "kasvin_nimi": "Kultaköynnös",
+    "tieteellinen_nimi": "Epipremnum aureum",
+    "hoitoohjeet": "Helppohoitoinen köynnöskasvi, joka sopii sekä roikkuvaksi että kiipeäväksi kasviksi",
+    "valo": "Viihtyy kirkkaassa epäsuorassa valossa, sietää myös varjoisampaa paikkaa",
+    "kastelu": "Kastele kun mullan pinta tuntuu kuivalta. Vältä seisovaa vettä ruukun pohjalla",
+    "multa": "Tavallinen huonekasvilta tai köynnöskasveille tarkoitettu multa",
+    "lämpötila": "18-25°C, ei alle 15°C",
+    "kosteus": "Viihtyy normaalissa huoneilman kosteudessa, suihkutus ajoittain hyväksi",
+    "lisävinkit": [
+      "Leikkaa tarvittaessa pitkäksi kasvaneet varret",
+      "Voidaan lisätä helposti pistokkaista",
+      "Puhdista lehdet pölystä kostealla liinalla",
+      "Lannoita kasvukaudella kerran kuukaudessa"
+    ],
+    "lähteet": [
+      "Wikipedia",
+      "Pirkka Puutarha",
+      "Plantagen.fi"
+    ]
+  },
+  {
+    "kasvin_nimi": "Muratti",
+    "tieteellinen_nimi": "Hedera helix",
+    "hoitoohjeet": "Helppohoitoinen köynnöskasvi, joka viihtyy viileässä. Sopii sekä ruukkuun että amppeliin.",
+    "valo": "Viihtyy parhaiten kirkkaassa epäsuorassa valossa. Sietää myös varjoisampaa paikkaa.",
+    "kastelu": "Kastele säännöllisesti, mutta anna pintamullan kuivahtaa kastelujen välillä. Vähennä kastelua talvella.",
+    "multa": "Tavallinen huonekasvimulta, jossa hyvä vedenläpäisykyky.",
+    "lämpötila": "Viihtyy viileässä, 10-20°C. Talvella voi olla viileämpääkin.",
+    "kosteus": "Pitää kosteasta ilmasta. Sumuta lehtiä säännöllisesti, etenkin lämmityskaudella.",
+    "lisävinkit": [
+      "Leikkaa venähtäneitä versoja tarvittaessa",
+      "Voidaan lisätä helposti pistokkaista",
+      "Puhdista lehdet pölystä kostealla liinalla",
+      "Myrkyllinen kasvi, pidä poissa lasten ja lemmikkien ulottuvilta"
+    ],
+    "lähteet": [
+      "Wikipedia",
+      "Puutarha.net",
+      "Viherpeukalot.fi"
+    ]
+  }
+]
