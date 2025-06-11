@@ -5,6 +5,45 @@ __pycache__
 .venv
 *.egg-info
 
+.env
+
+node_modules
+
 # CDK asset staging directory
 .cdk.staging
 cdk.out
+
+# Lambda Python dependencies (installed during bundling/build)
+silmu_ai/lambdas/*/python/
+silmu_ai/lambdas/*/site-packages/
+silmu_ai/lambdas/*/dist/
+silmu_ai/lambdas/*/build/
+silmu_ai/lambdas/*/.python_packages/
+silmu_ai/lambdas/*/.venv/
+silmu_ai/lambdas/*/__pycache__/
+silmu_ai/lambdas/*/*.egg-info
+
+# Ignore Python build/dependency folders in plants_lambda root
+silmu_ai/lambdas/plants_lambda/__pycache__/
+silmu_ai/lambdas/plants_lambda/*.egg-info
+silmu_ai/lambdas/plants_lambda/.venv/
+silmu_ai/lambdas/plants_lambda/.python_packages/
+silmu_ai/lambdas/plants_lambda/python/
+silmu_ai/lambdas/plants_lambda/site-packages/
+silmu_ai/lambdas/plants_lambda/dist/
+silmu_ai/lambdas/plants_lambda/build/
+silmu_ai/lambdas/plants_lambda/.pip-cache/
+
+# If you use requirements.txt for Lambda, you can also ignore .pip-cache
+silmu_ai/lambdas/*/.pip-cache/
+
+silmu_ai/lambdas/plants_lambda/*
+!silmu_ai/lambdas/plants_lambda/handler.py
+!silmu_ai/lambdas/plants_lambda/requirements.txt
+!silmu_ai/lambdas/plants_lambda/README.md
+!silmu_ai/lambdas/plants_lambda/initial_prompt.txt
+
+silmu_ai/lambdas/websocket_handlers/jwt_authorizer/*
+!silmu_ai/lambdas/websocket_handlers/jwt_authorizer/handler.py
+!silmu_ai/lambdas/websocket_handlers/jwt_authorizer/README.md
+!silmu_ai/lambdas/websocket_handlers/jwt_authorizer/requirements.txt

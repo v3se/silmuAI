@@ -1,6 +1,7 @@
 import os
 import time
 import boto3
+import json
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 from boto3.dynamodb.conditions import Key
@@ -21,7 +22,6 @@ DDB_TABLE = os.environ.get(
     "SilmuAiDatabaseStack-ConversationHistorytestE9173A78-1QUM5VKFBKL69",
 )
 
-# Lue system prompt tiedostosta
 PROMPT_PATH = os.path.join(os.path.dirname(__file__), "initial_prompt.txt")
 with open(PROMPT_PATH, "r", encoding="utf-8") as f:
     SYSTEM_PROMPT = f.read().strip()
@@ -34,7 +34,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # React dev server
+    allow_origins=["http://localhost:3000"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -42,10 +42,9 @@ app.add_middleware(
 
 
 def get_history(user_id):
-    """Fetch conversation history for a user, ordered by timestamp."""
     response = table.query(
         KeyConditionExpression=Key("user_id").eq(user_id),
-        ScanIndexForward=True,  # ascending order
+        ScanIndexForward=True,
     )
     history = response.get("Items", [])
     messages = [{"role": "assistant", "content": [{"text": SYSTEM_PROMPT}]}]
@@ -55,7 +54,6 @@ def get_history(user_id):
 
 
 def save_message(user_id, role, text):
-    """Save a message to DynamoDB."""
     table.put_item(
         Item={
             "user_id": user_id,
@@ -67,11 +65,14 @@ def save_message(user_id, role, text):
 
 
 def query_bedrock_with_history(user_id, user_prompt: str) -> str:
-    # Get conversation history (sisältää system-promptin)
     history = get_history(user_id)
-    # Add the new user message
+    # Remove any messages with blank text
+    history = [
+        msg
+        for msg in history
+        if msg.get("content") and msg["content"][0].get("text", "").strip()
+    ]
     history.append({"role": "user", "content": [{"text": user_prompt}]})
-    print(history)
     try:
         response = bedrock.converse(
             modelId=MODEL_ID,
@@ -90,7 +91,6 @@ def query_bedrock_with_history(user_id, user_prompt: str) -> str:
         )
     except Exception as e:
         answer = f"Error querying Bedrock: {str(e)}"
-    # Save both user and assistant messages
     save_message(user_id, "user", user_prompt)
     save_message(user_id, "assistant", answer)
     return answer
@@ -103,6 +103,82 @@ async def care_instructions(request: Request):
     user_prompt = data.get("prompt", "How do I care for my plant?")
     answer = query_bedrock_with_history(user_id, user_prompt)
     return JSONResponse(content={"answer": answer})
+
+
+# --- WebSocket handler for API Gateway $default route ---
+def lambda_handler(event, context):
+    # Detect WebSocket event
+    if "requestContext" in event and "connectionId" in event["requestContext"]:
+        connection_id = event["requestContext"]["connectionId"]
+        domain = event["requestContext"]["domainName"]
+        stage = event["requestContext"]["stage"]
+
+        # Parse user_id and prompt from the message body (assume JSON)
+        try:
+            body = event.get("body", "")
+            data = json.loads(body) if body else {}
+        except Exception:
+            data = {}
+
+        user_id = data.get("user_id", "anonymous")
+        user_prompt = data.get("prompt", "How do I care for my plant?")
+
+        apigw_management = boto3.client(
+            "apigatewaymanagementapi", endpoint_url=f"https://{domain}/{stage}"
+        )
+
+        # Prepare conversation history
+        history = get_history(user_id)
+        # Remove any messages with blank text
+        history = [
+            msg
+            for msg in history
+            if msg.get("content") and msg["content"][0].get("text", "").strip()
+        ]
+        # Add the new user prompt
+        history.append({"role": "user", "content": [{"text": user_prompt}]})
+
+        partial_answer = ""
+        try:
+            # Stream response from Bedrock
+            streaming_response = bedrock.converse_stream(
+                modelId=MODEL_ID,
+                messages=history,
+                inferenceConfig={
+                    "maxTokens": 4096,
+                    "temperature": 0.5,
+                    "topP": 0.9,
+                },
+            )
+
+            for chunk in streaming_response["stream"]:
+                if "contentBlockDelta" in chunk:
+                    text = chunk["contentBlockDelta"]["delta"]["text"]
+                    partial_answer += text  # <-- accumulate the answer!
+                    apigw_management.post_to_connection(
+                        ConnectionId=connection_id,
+                        Data=json.dumps({"token": text}).encode("utf-8"),
+                    )
+
+            # Save the full answer at the end
+            save_message(user_id, "user", user_prompt)
+            save_message(user_id, "assistant", partial_answer)
+
+            apigw_management.post_to_connection(
+                ConnectionId=connection_id,
+                Data=json.dumps({"done": True}).encode("utf-8"),
+            )
+        except Exception as e:
+            apigw_management.post_to_connection(
+                ConnectionId=connection_id,
+                Data=json.dumps(
+                    {"error": f"Error streaming from Bedrock: {str(e)}"}
+                ).encode("utf-8"),
+            )
+        return {"statusCode": 200}
+
+    # Fallback: HTTP (FastAPI) via Mangum
+    return handler(event, context)
 
 
 handler = Mangum(app)
