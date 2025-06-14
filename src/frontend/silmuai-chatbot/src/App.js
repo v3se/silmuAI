@@ -32,7 +32,7 @@ function appendDedup(prev, next) {
 
 function App() {
   const [messages, setMessages] = useState([
-    { sender: "assistant", text: "Hei! Miten voin auttaa kasveihisi liittyen?" }
+    { sender: "assistant", text: "Hei! Haluatko löytää herkullisen reseptin? Kerro mitä aineksia sinulla on tai millaista ruokaa haluaisit tehdä!" }
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -162,7 +162,7 @@ function App() {
       >
         Kirjaudu ulos
       </button>
-      <h2 style={{ textAlign: "center", color: "#2e7d32", fontSize: 32 }}>SilmuAI Chat</h2>
+      <h2 style={{ textAlign: "center", color: "#2e7d32", fontSize: 32 }}>Resepti Chat</h2>
       <div
         ref={chatRef}
         style={{
@@ -198,7 +198,7 @@ function App() {
               }}
             >
               <b style={{ fontWeight: 500 }}>
-                {msg.sender === "user" ? "Sinä" : "SilmuAI"}
+                {msg.sender === "user" ? "Sinä" : "ReseptiBot"}
               </b>
               <div style={{ marginTop: 2 }}>
                 <ReactMarkdown>{msg.text}</ReactMarkdown>
@@ -218,7 +218,7 @@ function App() {
                 boxShadow: "0 1px 2px #0001"
               }}
             >
-              <b>SilmuAI</b>
+              <b>ReseptiBot</b>
               <div style={{ marginTop: 2 }}>
                 Vastataan
                 <BlinkingDots />
@@ -232,7 +232,7 @@ function App() {
           ref={inputRef}
           value={input}
           onChange={e => setInput(e.target.value)}
-          placeholder="Kirjoita viesti..."
+          placeholder="Kerro mitä aineksia sinulla on tai millaista ruokaa haluaisit tehdä..."
           style={{
             flex: 1,
             padding: 12,

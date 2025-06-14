@@ -105,6 +105,18 @@ async def care_instructions(request: Request):
     return JSONResponse(content={"answer": answer})
 
 
+@app.post("/recipes/suggestions")
+async def recipe_suggestions(request: Request):
+    """
+    Suggest recipes based on user input (ingredients, preferences, etc).
+    """
+    data = await request.json()
+    user_id = data.get("user_id", "anonymous")
+    user_prompt = data.get("prompt", "Ehdota reseptiä.")
+    answer = query_bedrock_with_history(user_id, user_prompt)
+    return JSONResponse(content={"answer": answer})
+
+
 # --- WebSocket handler for API Gateway $default route ---
 def lambda_handler(event, context):
     # Detect WebSocket event
@@ -121,7 +133,7 @@ def lambda_handler(event, context):
             data = {}
 
         user_id = data.get("user_id", "anonymous")
-        user_prompt = data.get("prompt", "How do I care for my plant?")
+        user_prompt = data.get("prompt", "Ehdota reseptiä.")
 
         apigw_management = boto3.client(
             "apigatewaymanagementapi", endpoint_url=f"https://{domain}/{stage}"

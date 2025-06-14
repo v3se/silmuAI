@@ -17,7 +17,7 @@ class DatabaseStack(BaseStack):
         # Create DynamoDB table for conversation history
         self.conversation_table = dynamodb.Table(
             self,
-            self.resource_name("ConversationHistory"),
+            self.resource_name("RecipeConversationHistory"),
             partition_key=dynamodb.Attribute(
                 name="user_id", type=dynamodb.AttributeType.STRING
             ),
