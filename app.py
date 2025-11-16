@@ -3,26 +3,25 @@ import os
 
 import aws_cdk as cdk
 
-from silmu_ai.silmu_ai_stack import SilmuAiStack
+from silmu_ai.stacks.ApiStack import ApiStack
+from silmu_ai.stacks.DatabaseStack import DatabaseStack
+from silmu_ai.stacks.AuthStack import AuthStack
+from silmu_ai.stacks.FrontendStack import FrontendStack
 
 
 app = cdk.App()
-SilmuAiStack(app, "SilmuAiStack",
-    # If you don't specify 'env', this stack will be environment-agnostic.
-    # Account/Region-dependent features and context lookups will not work,
-    # but a single synthesized template can be deployed anywhere.
+silmu_auth_stack = AuthStack(app, "SilmuAiAuthStack")
 
-    # Uncomment the next line to specialize this stack for the AWS Account
-    # and Region that are implied by the current CLI configuration.
+silmu_database_stack = DatabaseStack(app, "SilmuAiDatabaseStack")
 
-    #env=cdk.Environment(account=os.getenv('CDK_DEFAULT_ACCOUNT'), region=os.getenv('CDK_DEFAULT_REGION')),
+ApiStack(
+    app,
+    "SilmuAiApiStack",
+    cognito_user_pool_id=silmu_auth_stack.user_pool.user_pool_id,
+    cognito_client_id=silmu_auth_stack.user_pool_client.user_pool_client_id,
+    conversation_table=silmu_database_stack.conversation_table,
+)
 
-    # Uncomment the next line if you know exactly what Account and Region you
-    # want to deploy the stack to. */
-
-    #env=cdk.Environment(account='123456789012', region='us-east-1'),
-
-    # For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html
-    )
+FrontendStack(app, "FrontendStack")
 
 app.synth()

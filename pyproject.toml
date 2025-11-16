@@ -1,0 +1,24 @@
+[project]
+name = "silmuai"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "aws-cdk-lib==2.190.0",
+    "aws-solutions-constructs-aws-apigateway-lambda>=2.84.0",
+    "constructs>=10.0.0,<11.0.0",
+    "requests>=2.32.3",
+]
+
+[dependency-groups]
+dev = [
+    "pandas>=2.3.0",
+    "sparqlwrapper>=2.0.0",
+    "uvicorn>=0.34.3",
+]
+
+[tool.uv.workspace]
+members = [
+    "silmu_ai/lambdas/plants_lambda",
+]
